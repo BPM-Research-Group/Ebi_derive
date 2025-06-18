@@ -11,9 +11,9 @@ repository = "https://github.com/BPM-Research-Group/Ebi_derive"
 readme = "README.md"
 
 [dependencies]
-syn = "*"
-quote = "*"
-darling = "*"
+syn = "2.0.103"
+quote = "1.0.40"
+darling = "0.20.11"
 
 [lib]
 proc-macro = true
