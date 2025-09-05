@@ -1,6 +1,6 @@
 [package]
 name = "ebi_derive"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 keywords = []
@@ -13,7 +13,7 @@ readme = "README.md"
 [dependencies]
 syn = "2.0.103"
 quote = "1.0.40"
-darling = "0.20.11"
+darling = "0.21.3"
 
 [lib]
 proc-macro = true
