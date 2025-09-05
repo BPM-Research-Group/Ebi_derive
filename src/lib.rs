@@ -13,11 +13,11 @@ pub fn derive(input: TokenStream) -> TokenStream {
 
     let output = quote! {
         impl crate::activity_key::has_activity_key::HasActivityKey for #ident {
-            fn get_activity_key(&self) -> &ActivityKey {
+            fn activity_key(&self) -> &ActivityKey {
                 &self.activity_key
             }
         
-            fn get_activity_key_mut(&mut self) -> &mut ActivityKey {
+            fn activity_key_mut(&mut self) -> &mut ActivityKey {
                 &mut self.activity_key
             }
         }
