@@ -12,7 +12,7 @@ pub fn derive(input: TokenStream) -> TokenStream {
     let DeriveInput { ident, .. } = input;
 
     let output = quote! {
-        impl crate::ebi_framework::activity_key::HasActivityKey for #ident {
+        impl ebi_objects::HasActivityKey for #ident {
             fn get_activity_key(&self) -> &ActivityKey {
                 &self.activity_key
             }
