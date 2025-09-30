@@ -5,21 +5,18 @@ use proc_macro::TokenStream;
 use quote::quote;
 #[allow(unused_imports)]
 use syn::{DeriveInput, Ident, parse_macro_input};
-use syn::{ItemStruct, parse_quote};
+use syn::{ItemEnum, parse_quote};
 
-//credit to Yandros: https://users.rust-lang.org/t/derive-macro-aggregating-several-derive-macros/80222/11
+//inspired by Yandros: https://users.rust-lang.org/t/derive-macro-aggregating-several-derive-macros/80222/11
 #[doc(hidden)]
 #[proc_macro_attribute]
 pub fn __annihilate(_: TokenStream, _: TokenStream) -> TokenStream {
     <_>::default()
 }
 
-#[proc_macro_derive(
-    EbiInputEnum,
-    // attributes(sql_type), /* in case you wanted to allow extra `#[sql_typ>e]` annotations under your derive */
-)]
+#[proc_macro_derive(EbiInputEnum)]
 pub fn aggregate_macro(item: TokenStream) -> TokenStream {
-    let mut item: ItemStruct = parse_macro_input!(item);
+    let mut item: ItemEnum = parse_macro_input!(item);
     // ensure the generated item definition does not end up actually emitted.
     item.attrs.push(parse_quote!(
         #[::ebi_derive::__annihilate]
