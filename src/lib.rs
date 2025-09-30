@@ -14,7 +14,7 @@ pub fn __annihilate(_: TokenStream, _: TokenStream) -> TokenStream {
     <_>::default()
 }
 
-#[proc_macro_derive(EbiInputEnum)]
+#[proc_macro_derive(EbiInputEnum, attributes(strum))]
 pub fn aggregate_macro(item: TokenStream) -> TokenStream {
     let mut item: ItemEnum = parse_macro_input!(item);
     // ensure the generated item definition does not end up actually emitted.
