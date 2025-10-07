@@ -57,7 +57,7 @@ pub fn derive_from_ebi_trait_object(input: TokenStream) -> TokenStream {
 }
 
 #[proc_macro_derive(ActivityKey)]
-pub fn derive(input: TokenStream) -> TokenStream {
+pub fn derive_activity(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input);
     let DeriveInput { ident, .. } = input;
 
@@ -69,6 +69,25 @@ pub fn derive(input: TokenStream) -> TokenStream {
 
             fn activity_key_mut(&mut self) -> &mut ActivityKey {
                 &mut self.activity_key
+            }
+        }
+    };
+    output.into()
+}
+
+#[proc_macro_derive(AttributeKey)]
+pub fn derive_attribute(input: TokenStream) -> TokenStream {
+    let input = parse_macro_input!(input);
+    let DeriveInput { ident, .. } = input;
+
+    let output = quote! {
+        impl crate::attribute_key::has_attribute_key::HasAttributeKey for #ident {
+            fn attribute_key(&self) -> &AttributeKey {
+                &self.attribute_key
+            }
+
+            fn attribute_key_mut(&mut self) -> &mut AttributeKey {
+                &mut self.attribute_key
             }
         }
     };
