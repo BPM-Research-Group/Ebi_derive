@@ -62,7 +62,7 @@ pub fn derive_activity(input: TokenStream) -> TokenStream {
     let DeriveInput { ident, .. } = input;
 
     let output = quote! {
-        impl crate::activity_key::has_activity_key::HasActivityKey for #ident {
+        impl ebi_activity_key::HasActivityKey for #ident {
             fn activity_key(&self) -> &ActivityKey {
                 &self.activity_key
             }
@@ -81,7 +81,7 @@ pub fn derive_attribute(input: TokenStream) -> TokenStream {
     let DeriveInput { ident, .. } = input;
 
     let output = quote! {
-        impl crate::attribute_key::has_attribute_key::HasAttributeKey for #ident {
+        impl ebi_activity_key::HasAttributeKey for #ident {
             fn attribute_key(&self) -> &AttributeKey {
                 &self.attribute_key
             }
