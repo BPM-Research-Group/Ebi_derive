@@ -81,7 +81,7 @@ pub fn derive_attribute(input: TokenStream) -> TokenStream {
     let DeriveInput { ident, .. } = input;
 
     let output = quote! {
-        impl ebi_objects::attribute_key::HasAttributeKey for #ident {
+        impl crate::attribute_key::has_attribute_key::HasAttributeKey for #ident {
             fn attribute_key(&self) -> &AttributeKey {
                 &self.attribute_key
             }
