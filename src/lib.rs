@@ -27,8 +27,10 @@ pub fn aggregate_macro(item: TokenStream) -> TokenStream {
             ::ebi_derive::EbiInputEnumFromEbiTraitObject,
             ::strum_macros::VariantNames,
             ::strum_macros::EnumString,
+            ::strum_macros::IntoStaticString,
         )]
         #[strum(serialize_all = "lowercase")]
+        #[strum(const_into_str)]
         #item
     )
     .into()
